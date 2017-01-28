@@ -1,0 +1,6 @@
+framework module Pods_Elastic {
+  umbrella header "Pods-Elastic-umbrella.h"
+
+  export *
+  module * { export * }
+}

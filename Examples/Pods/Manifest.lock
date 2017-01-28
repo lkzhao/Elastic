@@ -1,0 +1,16 @@
+PODS:
+  - Hero (0.1.1)
+
+DEPENDENCIES:
+  - Hero (from `../../Hero`)
+
+EXTERNAL SOURCES:
+  Hero:
+    :path: ../../Hero
+
+SPEC CHECKSUMS:
+  Hero: d200032e0402af232d5b6c4651d1830c9ce2f40c
+
+PODFILE CHECKSUM: f91aa24d44149e749626fc68c5b4d690e0b1057a
+
+COCOAPODS: 1.1.1

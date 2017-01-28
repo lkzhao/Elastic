@@ -1,0 +1,11 @@
+platform :ios, '9.0'
+
+target 'Elastic' do
+  use_frameworks!
+  pod "Hero", :path=>"../../Hero"
+end
+
+target 'ElasticExamples' do
+  use_frameworks!
+  pod "Hero", :path=>"../../Hero"
+end
