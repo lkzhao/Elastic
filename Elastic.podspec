@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = "https://github.com/lkzhao/Elastic"
-  s.screenshots      = "https://github.com/lkzhao/Elastic/blob/master/Resources/Elastic@2x.png?raw=true"
+  s.screenshots      = "https://github.com/lkzhao/Elastic/blob/master/Resources/elastic.png?raw=true"
   s.license          = 'MIT'
   s.author           = { "Luke" => "lzhaoyilun@gmail.com" }
   s.source           = { :git => "https://github.com/lkzhao/Elastic.git", :tag => s.version.to_s }
