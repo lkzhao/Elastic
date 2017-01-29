@@ -10,6 +10,21 @@ import UIKit
 import Elastic
 import Hero
 
+extension CGFloat {
+  static var random:CGFloat {
+    return CGFloat(arc4random()) / CGFloat(UInt32.max)
+  }
+}
+
+extension UIColor {
+  static var random: UIColor {
+    return UIColor(red:   .random/2 + 0.5,
+                   green: .random/2 + 0.5,
+                   blue:  .random/2 + 0.5,
+                   alpha: 1.0)
+  }
+}
+
 class ViewController: UIViewController {
 
   @IBOutlet weak var label: UILabel!
@@ -20,6 +35,8 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     ElasticHeroPlugin.enable()
     
+    view.backgroundColor = .random
+    
     rightGR = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(pan(gr:)))
     rightGR.edges = UIRectEdge.right
     view.addGestureRecognizer(rightGR)
@@ -27,11 +44,15 @@ class ViewController: UIViewController {
     leftGR = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(pan(gr:)))
     leftGR.edges = UIRectEdge.left
     view.addGestureRecognizer(leftGR)
+    
+    label.heroModifiers = [.fade, .scale(0.5)]
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    label.text = "\(navigationController!.childViewControllers.count)"
+    let count = navigationController!.childViewControllers.count
+    label.text = "\(count)"
+    title = "\(count)"
   }
   
   func pan(gr:UIScreenEdgePanGestureRecognizer){

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A313a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g61-Fh-oEf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g61-Fh-oEf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,15 +21,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXx-wd-FHf">
-                                <rect key="frame" x="142" y="318" width="91" height="30"/>
-                                <state key="normal" title="Push another"/>
+                                <rect key="frame" x="142" y="438.5" width="91" height="30"/>
+                                <state key="normal" title="Push another">
+                                    <color key="titleColor" red="0.2388712764" green="0.33509445189999998" blue="0.42733851080000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="next" id="f8o-4B-6co"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDg-sr-4P0">
-                                <rect key="frame" x="93" y="153.5" width="188.5" height="95.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                <rect key="frame" x="-95.5" y="112" width="566" height="286.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="240"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -37,9 +39,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xXx-wd-FHf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0bx-AV-OAh"/>
-                            <constraint firstItem="xXx-wd-FHf" firstAttribute="top" secondItem="DDg-sr-4P0" secondAttribute="bottom" constant="69" id="8Wp-h6-olG"/>
+                            <constraint firstItem="xXx-wd-FHf" firstAttribute="top" secondItem="DDg-sr-4P0" secondAttribute="bottom" constant="40" id="8Wp-h6-olG"/>
                             <constraint firstItem="DDg-sr-4P0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Krk-gc-UyX"/>
-                            <constraint firstItem="xXx-wd-FHf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nr3-Wg-T1S"/>
+                            <constraint firstItem="xXx-wd-FHf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="nr3-Wg-T1S"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="T3u-KR-SBO"/>
@@ -49,15 +51,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="865"/>
+            <point key="canvasLocation" x="1876" y="1191"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="Qme-vI-nYu">
             <objects>
                 <navigationController id="g61-Fh-oEf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9T6-qb-xkx">
+                    <tabBarItem key="tabBarItem" title="Item" id="o6W-g2-N1J"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="9T6-qb-xkx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
@@ -68,7 +72,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0K-vP-4u8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="865"/>
+            <point key="canvasLocation" x="948" y="1192"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -68,32 +68,57 @@ public class ElasticHeroPlugin: HeroPlugin {
     return context.container.bounds
   }
 
-  public override func canAnimate(view: UIView, appearing: Bool) -> Bool {
-    if self.view != nil {
-      // we can only animate one view
-      return false
+  private func clearSubViewEffects(view:UIView){
+    for view in view.subviews {
+      context[view] = nil
+      clearSubViewEffects(view: view)
     }
-    if let gestureRecognizers = context[view]?["elastic"] as? [Edge:UIPanGestureRecognizer]{
-      for (edge, gestureRecognizer) in gestureRecognizers {
-        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-          self.view = view
-          self.edge = appearing ? edge.opposite : edge
-          self.appearing = appearing
-          self.gestureRecognizer = gestureRecognizer
-          return true
+  }
+
+  public override func process(fromViews: [UIView], toViews: [UIView]) {
+    for view in fromViews {
+      if let gestureRecognizers = context[view]?["elastic"] as? [Edge:UIPanGestureRecognizer]{
+        for (edge, gestureRecognizer) in gestureRecognizers {
+          if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            self.view = view
+            self.edge = edge
+            self.appearing = false
+            self.gestureRecognizer = gestureRecognizer
+            clearSubViewEffects(view: view)
+            return
+          }
         }
       }
     }
-    return false
+    for view in toViews {
+      if let gestureRecognizers = context[view]?["elastic"] as? [Edge:UIPanGestureRecognizer]{
+        for (edge, gestureRecognizer) in gestureRecognizers {
+          if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            self.view = view
+            self.edge = edge.opposite
+            self.appearing = true
+            self.gestureRecognizer = gestureRecognizer
+            clearSubViewEffects(view: view)
+            return
+          }
+        }
+      }
+    }
+  }
+  
+  public override func canAnimate(view: UIView, appearing: Bool) -> Bool {
+    return self.view == view
   }
   
   public override func animate(fromViews: [UIView], toViews: [UIView]) -> TimeInterval {
-    guard let view = fromViews.first ?? toViews.first else { return 0 }
+    guard let view = self.view else { return 0 }
     elasticView = ElasticShapeView(frame:view.frame)
     context.container.addSubview(elasticView)
     context.unhide(view: view)
     elasticView.setUpTexture(view:view)
-    context.hide(view: view)
+    elasticView.onNextDraw = {
+      self.context.hide(view: view)
+    }
     elasticView.layer.shadowColor = UIColor.black.cgColor
     elasticView.layer.shadowRadius = 5
     elasticView.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -205,7 +230,7 @@ public class ElasticHeroPlugin: HeroPlugin {
   }
   
   public override func clean() {
-    animator.removeAllBehaviors()
+    animator?.removeAllBehaviors()
     animator = nil
     elasticView?.removeFromSuperview()
     elasticView = nil
