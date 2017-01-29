@@ -8,11 +8,11 @@
 ![iOS 8.0+](https://img.shields.io/badge/iOS-8.0%2B-blue.svg)
 ![Swift 3.0+](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)
 
-Fancy elastic transition using Metal & UIKit Dynamics, powered by [Hero](https://github.com/lkzhao/Hero):
+Fancy elastic transition powered by **Metal**, **UIKit Dynamics**, & **[Hero](https://github.com/lkzhao/Hero)**:
 
 <a href="http://lkzhao.com/video/?path=%5Cpublic%5Cposts%5Chero%5CElastic.mov"><img src="https://github.com/lkzhao/Elastic/blob/master/Resources/elastic.png?raw=true" width="300"/></a>
 
-This is just a proof of concept inspired by [Álvaro Carreras's Slide Concept](https://dribbble.com/shots/899177-Slide-Concept). Not really optimized and does not support older devices.
+A proof of concept inspired by [Álvaro Carreras's Slide Concept](https://dribbble.com/shots/899177-Slide-Concept). Not really optimized and does not support older devices.
 
 Supports UINavigationController, UITabBarController, & Modal Present. Since it is powered by Hero, the other views can still benefit from animations constructed by Hero.
 
