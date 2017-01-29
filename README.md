@@ -8,11 +8,13 @@
 ![iOS 8.0+](https://img.shields.io/badge/iOS-8.0%2B-blue.svg)
 ![Swift 3.0+](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)
 
-A Hero Plugin that does elastic transition using metal:
+Fancy elastic transition using Metal & UIKit Dynamics, powered by [Hero](https://github.com/lkzhao/Hero):
 
 <a href="http://lkzhao.com/video/?path=%5Cpublic%5Cposts%5Chero%5CElastic.mov"><img src="https://github.com/lkzhao/Elastic/blob/master/Resources/elastic.png?raw=true" width="300"/></a>
 
 This is just a proof of concept inspired by [Álvaro Carreras's Slide Concept](https://dribbble.com/shots/899177-Slide-Concept). Not really optimized and does not support older devices.
+
+Supports UINavigationController, UITabBarController, & Modal Present. Since it is powered by Hero, the other views can still benefit from animations constructed by Hero.
 
 ## Requirements
 * Xcode 8.2
@@ -21,22 +23,30 @@ This is just a proof of concept inspired by [Álvaro Carreras's Slide Concept](h
 
 Won't work on simulator.
 
+## Installation
+```ruby
+pod "Elastic"
+```
+
 ## Usage
 ```swift
   override func viewDidLoad() {
     super.viewDidLoad()
-    // 1. setup a gesture recognizer
+    // 1. Enable the plugin
+    ElasticHeroPlugin.isEnabled = true
+    
+    // 2. setup a gesture recognizer
     let leftGR = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(pan(gr:)))
     leftGR.edges = UIRectEdge.left
     view.addGestureRecognizer(leftGR)
     
-    // 2. set the heroModifier of the elastic view to be
+    // 3. set the heroModifier of the elastic view to be
     view.heroModifiers = [.elastic(edge: .left, gestureRecognizer: leftGR)]
   }
     
   func pan(gr:UIScreenEdgePanGestureRecognizer){
     if gr.state == .began {
-      // 3. perform your transition when the gesture recognizer begans. the rest will be handled automatically
+      // 4. perform your transition when the gesture recognizer begans. the rest will be handled automatically
       performSegue(withIdentifier: "next", sender: nil)
     }
   }
@@ -45,6 +55,7 @@ Won't work on simulator.
 The elastic view doesn't have to be the gesture recognizer's view. For example, the following code makes the next view controller's view elastic.
 
 ```swift
+  // This replaces step 3
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let vc = segue.destination
     vc.view.heroModifiers = [.elastic(edge: .right, gestureRecognizer: rightGR)]
