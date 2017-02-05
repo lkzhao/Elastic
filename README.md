@@ -12,7 +12,7 @@ Fancy elastic transition powered by **Metal**, **UIKit Dynamics**, & **[Hero](ht
 
 <a href="http://lkzhao.com/video/?path=%5Cpublic%5Cposts%5Chero%5CElastic.mov"><img src="https://github.com/lkzhao/Elastic/blob/master/Resources/elastic.png?raw=true" width="300"/></a>
 
-A proof of concept inspired by [Álvaro Carreras's Slide Concept](https://dribbble.com/shots/899177-Slide-Concept). Not really optimized and does not support older devices.
+Just a proof of concept inspired by [Álvaro Carreras's Slide Concept](https://dribbble.com/shots/899177-Slide-Concept). Not really optimized and does not support older devices. You **should not** use this in production. If you want something similar, checkout [ElasticTransition](https://github.com/lkzhao/ElasticTransition)
 
 Supports UINavigationController, UITabBarController, & Modal Present. Since it is powered by Hero, the other views can still benefit from animations constructed by Hero.
 
